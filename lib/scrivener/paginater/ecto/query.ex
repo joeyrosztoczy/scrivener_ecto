@@ -6,8 +6,8 @@ defimpl Scrivener.Paginater, for: Ecto.Query do
   @moduledoc false
 
   @spec paginate(Ecto.Query.t, Scrivener.Config.t) :: Scrivener.Page.t
-  def paginate(query, %Config{page_size: page_size, page_number: page_number, module: repo}) do
-    total_entries = total_entries(query, repo)
+  def paginate(query, %Config{page_size: page_size, page_number: page_number, module: repo, show_totals: show_totals}) do
+    total_entries = total_entries(query, repo, show_totals)
 
     %Page{
       page_size: page_size,
@@ -27,7 +27,8 @@ defimpl Scrivener.Paginater, for: Ecto.Query do
     |> repo.all
   end
 
-  defp total_entries(query, repo) do
+  defp total_entries(_, _, false), do: 0
+  defp total_entries(query, repo, _) do
     primary_key =
       query.from
       |> elem(1)
@@ -46,6 +47,7 @@ defimpl Scrivener.Paginater, for: Ecto.Query do
     total_entries || 0
   end
 
+  defp total_pages(0, _), do: 0
   defp total_pages(total_entries, page_size) do
     (total_entries / page_size) |> Float.ceil |> round
   end

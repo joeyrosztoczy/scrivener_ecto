@@ -8,6 +8,8 @@ First, you'll want to `use` Scrivener in your application's Ecto Repo. This will
 
 You may also want to call `paginate` with a params map along with your query. If provided with a params map, Scrivener will use the values in the keys `"page"` and `"page_size"` before using any configured defaults.
 
+An additional parameter, `"show_totals"` can be used to turn off total pages and total entries values for large or unbounded datasets. `"show_totals"` defaults to `true`.
+
 ## Example
 
 ```elixir

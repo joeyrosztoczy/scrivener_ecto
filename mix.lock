@@ -9,4 +9,4 @@
   "ex_spec": {:hex, :ex_spec, "1.0.0", "b1e791072fecbf80c725adf45e7cbdf3d96af3765638a1f1547824706ece4bc9", [:mix], []},
   "poolboy": {:hex, :poolboy, "1.5.1", "6b46163901cfd0a1b43d692657ed9d7e599853b3b21b95ae5ae0a777cf9b6ca8", [:rebar], []},
   "postgrex": {:hex, :postgrex, "0.12.1", "2f8b46cb3a44dcd42f42938abedbfffe7e103ba4ce810ccbeee8dcf27ca0fb06", [:mix], [{:connection, "~> 1.0", [hex: :connection, optional: false]}, {:db_connection, "~> 1.0-rc.4", [hex: :db_connection, optional: false]}, {:decimal, "~> 1.0", [hex: :decimal, optional: false]}]},
-  "scrivener": {:hex, :scrivener, "2.1.1", "eb52c8b7d283e8999edd6fd50d872ab870669d1f4504134841d0845af11b5ef3", [:mix], []}}
+  "scrivener": {:git, "https://github.com/joeyrosztoczy/scrivener.git", "052fb39a2a8e61d2b794f2f492e5dede323ea80e", []}}

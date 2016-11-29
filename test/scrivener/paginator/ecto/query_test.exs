@@ -62,6 +62,21 @@ defmodule Scrivener.Paginator.Ecto.QueryTest do
       assert page.total_pages == 2
     end
 
+    test "Won't count total pages if config turns it off" do
+      posts = create_posts
+
+      page =
+        Post
+        |> Post.published
+        |> Scrivener.Ecto.Repo.paginate([show_totals: false])
+
+      assert page.page_size == 5
+      assert page.page_number == 1
+      assert page.entries == Enum.take(posts, 5)
+      assert page.total_pages == 0
+      assert page.total_entries == 0
+    end
+
     test "removes invalid clauses before counting total pages" do
       posts = create_posts
 
